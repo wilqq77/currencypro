@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { useSettings } from './hooks/useSettings';
 import { HomePage } from './pages/HomePage';
@@ -14,7 +14,7 @@ export default function App() {
   const toggleLanguage = () => update({ language: settings.language === 'ru' ? 'en' : 'ru' });
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <MainLayout settings={settings} onLanguageToggle={toggleLanguage}>
         <Routes>
           <Route path="/" element={<HomePage settings={settings} />} />
@@ -26,6 +26,6 @@ export default function App() {
           <Route path="*" element={<div className="p-8">Страница не найдена</div>} />
         </Routes>
       </MainLayout>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
